@@ -1,0 +1,227 @@
+[
+  {
+    "filename": "circle1.jpg",
+    "class": "circles",
+    "capture_date": "2026-08-16",
+    "capture_time": "16:47:01",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "Final_Lab/Dataset/circle1.jpg",
+    "orig_size": "960x1280",
+    "cropped_size": "562x562",
+    "aspect_ratio": 1.0,
+    "center": [
+      281,
+      281
+    ]
+  },
+  {
+    "filename": "circle2.jpg",
+    "class": "circles",
+    "capture_date": "2026-08-16",
+    "capture_time": "16:47:08",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "Final_Lab/Dataset/circle2.jpg",
+    "orig_size": "1280x960",
+    "cropped_size": "637x637",
+    "aspect_ratio": 1.0,
+    "center": [
+      318,
+      318
+    ]
+  },
+  {
+    "filename": "circle3.jpg",
+    "class": "circles",
+    "capture_date": "2026-08-16",
+    "capture_time": "16:47:13",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "Final_Lab/Dataset/circle3.jpg",
+    "orig_size": "1280x960",
+    "cropped_size": "762x762",
+    "aspect_ratio": 1.0,
+    "center": [
+      381,
+      381
+    ]
+  },
+  {
+    "filename": "circle4.jpg",
+    "class": "circles",
+    "capture_date": "2026-08-17",
+    "capture_time": "03:04:11",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "photo_uploaded_squircle_centered",
+    "orig_size": "475x635",
+    "cropped_size": "475x475",
+    "aspect_ratio": 1.0,
+    "center": [
+      237,
+      237
+    ]
+  },
+  {
+    "filename": "circle5.jpg",
+    "class": "circles",
+    "capture_date": "2026-08-17",
+    "capture_time": "02:44:23",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "Final_Lab/Dataset/new data/photo_1_2026-08-17_02-44-23.jpg",
+    "orig_size": "1280x960",
+    "cropped_size": "747x747",
+    "aspect_ratio": 1.0,
+    "center": [
+      721,
+      415
+    ]
+  },
+  {
+    "filename": "square1.jpg",
+    "class": "squares",
+    "capture_date": "2026-08-16",
+    "capture_time": "16:47:56",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "Final_Lab/Dataset/square1.jpg",
+    "orig_size": "1280x960",
+    "cropped_size": "701x701",
+    "aspect_ratio": 1.0,
+    "center": [
+      350,
+      350
+    ]
+  },
+  {
+    "filename": "square2.jpg",
+    "class": "squares",
+    "capture_date": "2026-08-16",
+    "capture_time": "16:48:23",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "Final_Lab/Dataset/square2.jpg",
+    "orig_size": "960x1280",
+    "cropped_size": "933x933",
+    "aspect_ratio": 1.0,
+    "center": [
+      466,
+      466
+    ]
+  },
+  {
+    "filename": "square3.jpg",
+    "class": "squares",
+    "capture_date": "2026-08-16",
+    "capture_time": "16:48:14",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "Final_Lab/Dataset/square3.jpg",
+    "orig_size": "1280x960",
+    "cropped_size": "538x538",
+    "aspect_ratio": 1.0,
+    "center": [
+      269,
+      269
+    ]
+  },
+  {
+    "filename": "square4.jpg",
+    "class": "squares",
+    "capture_date": "2026-08-17",
+    "capture_time": "02:44:23",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "Final_Lab/Dataset/new data/photo_2_2026-08-17_02-44-23.jpg",
+    "orig_size": "960x1280",
+    "cropped_size": "960x960",
+    "aspect_ratio": 1.0,
+    "center": [
+      442,
+      606
+    ]
+  },
+  {
+    "filename": "square5.jpg",
+    "class": "squares",
+    "capture_date": "2026-08-17",
+    "capture_time": "02:44:23",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "Final_Lab/Dataset/new data/photo_3_2026-08-17_02-44-23.jpg",
+    "orig_size": "1280x960",
+    "cropped_size": "695x695",
+    "aspect_ratio": 1.0,
+    "center": [
+      666,
+      441
+    ]
+  },
+  {
+    "filename": "triangle1.jpg",
+    "class": "triangles",
+    "capture_date": "2026-08-16",
+    "capture_time": "16:47:19",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "Final_Lab/Dataset/triangle1.jpg",
+    "orig_size": "960x1280",
+    "cropped_size": "817x817",
+    "aspect_ratio": 1.0,
+    "center": [
+      408,
+      408
+    ]
+  },
+  {
+    "filename": "triangle2.jpg",
+    "class": "triangles",
+    "capture_date": "2026-08-16",
+    "capture_time": "16:47:26",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "Final_Lab/Dataset/triangle2.jpg",
+    "orig_size": "960x1280",
+    "cropped_size": "843x843",
+    "aspect_ratio": 1.0,
+    "center": [
+      421,
+      421
+    ]
+  },
+  {
+    "filename": "triangle3.jpg",
+    "class": "triangles",
+    "capture_date": "2026-08-16",
+    "capture_time": "16:47:39",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "Final_Lab/Dataset/triangle3.jpg",
+    "orig_size": "960x1280",
+    "cropped_size": "862x862",
+    "aspect_ratio": 1.0,
+    "center": [
+      431,
+      431
+    ]
+  },
+  {
+    "filename": "triangle4.jpg",
+    "class": "triangles",
+    "capture_date": "2026-08-17",
+    "capture_time": "02:44:23",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "Final_Lab/Dataset/new data/photo_4_2026-08-17_02-44-23.jpg",
+    "orig_size": "1280x960",
+    "cropped_size": "815x815",
+    "aspect_ratio": 1.0,
+    "center": [
+      637,
+      374
+    ]
+  },
+  {
+    "filename": "triangle5.jpg",
+    "class": "triangles",
+    "capture_date": "2026-08-16",
+    "capture_time": "16:47:46",
+    "device_model": "Vivo Y11 (vivo 1906)",
+    "source_path": "Final_Lab/Dataset/extra_photos/triangle5.jpg",
+    "orig_size": "960x960",
+    "cropped_size": "960x960",
+    "aspect_ratio": 1.0,
+    "center": [
+      480,
+      480
+    ]
+  }
+]

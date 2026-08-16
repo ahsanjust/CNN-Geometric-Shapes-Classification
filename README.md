@@ -42,9 +42,10 @@ Class names are dynamically mapped from the folder structure (`0: circles`, `1: 
 
 ### Custom Real-World Smartphone Dataset (`dataset/`)
 - 15 smartphone photos (**5 Circles**, **5 Squares**, **5 Triangles**) drawn on paper with a ballpoint pen.
-- Preprocessed to remove camera watermark overlays and binary metadata headers.
+- Preprocessed to remove camera watermark overlays and binary metadata headers via Fast Marching Telea inpainting.
 - Centered into 1:1 square aspect ratio bounding boxes to preserve geometric symmetry during downsampling.
-- Features diverse real-world geometric variations including standard equilateral shapes, egg-shaped ovals, $45^\circ$ diamond-rotated squares, rounded squares, and wide obtuse triangles.
+- Contrast-enhanced and line-bolded to normalize thin ballpoint strokes against pure background paper.
+- Features diverse real-world geometric variations including standard shapes, hand-drawn squircle variations, egg-shaped ovals, $45^\circ$ diamond-rotated squares, rounded squares, and wide obtuse triangles.
 
 ---
 
@@ -100,13 +101,13 @@ The trained CNN model was evaluated on all 15 custom smartphone photographs ($3 
 | `circle1.jpg` | **Circle** | **circles** | 97.4% | $[97.4\%, 0.9\%, 1.6\%]$ | ✅ Correct |
 | `circle2.jpg` | **Circle** | **circles** | 97.1% | $[97.1\%, 1.4\%, 1.5\%]$ | ✅ Correct |
 | `circle3.jpg` | **Circle** | **circles** | 94.4% | $[94.4\%, 4.1\%, 1.5\%]$ | ✅ Correct |
-| `circle4.jpg` | **Circle** | **circles** | 92.0% | $[92.0\%, 7.5\%, 0.5\%]$ | ✅ Correct |
-| `circle5.jpg` | **Circle** | **triangles** | 77.1% | $[14.4\%, 8.6\%, 77.0\%]$ | ❌ Pointed Egg-Apex |
-| `square1.jpg` | **Square** | **squares** | 65.2% | $[3.0\%, 65.0\%, 32.0\%]$ | ✅ Correct |
-| `square2.jpg` | **Square** | **circles** | 61.6% | $[61.6\%, 31.1\%, 7.2\%]$ | ❌ Bowed Curvature |
-| `square3.jpg` | **Square** | **squares** | 79.9% | $[15.6\%, 79.9\%, 4.6\%]$ | ✅ Correct |
-| `square4.jpg` | **Square** | **circles** | 99.1% | $[99.1\%, 0.0\%, 0.9\%]$ | ❌ $45^\circ$ Diamond Rotation |
-| `square5.jpg` | **Square** | **squares** | 77.1% | $[19.6\%, 77.0\%, 3.4\%]$ | ✅ Correct |
+| `circle4.jpg` | **Circle** | **circles** | 88.7% | $[88.7\%, 10.7\%, 0.6\%]$ | ✅ Correct |
+| `circle5.jpg` | **Circle** | **triangles** | 77.1% | $[14.3\%, 8.6\%, 77.1\%]$ | ❌ Pointed Egg-Apex $\to$ Triangle |
+| `square1.jpg` | **Square** | **squares** | 65.2% | $[3.0\%, 65.2\%, 31.8\%]$ | ✅ Correct |
+| `square2.jpg` | **Square** | **circles** | 61.6% | $[61.6\%, 31.1\%, 7.3\%]$ | ❌ Bowed Curvature $\to$ Circle |
+| `square3.jpg` | **Square** | **squares** | 79.9% | $[15.5\%, 79.9\%, 4.6\%]$ | ✅ Correct |
+| `square4.jpg` | **Square** | **circles** | 99.1% | $[99.1\%, 0.0\%, 0.9\%]$ | ❌ $45^\circ$ Diamond Rotation $\to$ Circle |
+| `square5.jpg` | **Square** | **squares** | 77.1% | $[19.5\%, 77.1\%, 3.4\%]$ | ✅ Correct |
 | `triangle1.jpg`| **Triangle** | **triangles** | 97.7% | $[2.1\%, 0.2\%, 97.7\%]$ | ✅ Correct |
 | `triangle2.jpg`| **Triangle** | **triangles** | 98.7% | $[1.0\%, 0.3\%, 98.7\%]$ | ✅ Correct |
 | `triangle3.jpg`| **Triangle** | **triangles** | 94.4% | $[3.9\%, 1.7\%, 94.4\%]$ | ✅ Correct |
@@ -122,15 +123,14 @@ The trained CNN model was evaluated on all 15 custom smartphone photographs ($3 
 
 ## 5. Scientific Domain Shift Analysis
 
-1. **Stroke Width & Pixel Density Disparity:**
-   The standard training dataset comprises clipart-style drawings with thick lines ($10\text{--}20\text{ px}$ wide) on solid white backgrounds. In contrast, custom smartphone photos feature thin ballpoint pen lines ($1\text{--}2\text{ px}$ wide). At $64 \times 64$ resolution, thin lines exhibit subtle contrast loss against natural paper shadows.
-
-2. **Rotational Invariance Limitations (`square4.jpg`):**
+1. **Rotational Invariance Limitations (`square4.jpg`):**
    When a square is rotated by $45^\circ$ (diamond shape), its edges become purely diagonal. Because the standard CNN without rotation augmentation expects axis-aligned horizontal and vertical lines, the diagonal contour was interpreted as radial curvature ($99.1\%$ circle).
 
-3. **Curvature and Vertex Ambiguities (`circle5.jpg` & `square2.jpg`):**
-   - In `circle5.jpg`, hand-drawn tapering produced a pointed egg-shaped tip on the right edge, causing the network's convolutional filters to detect an acute vertex and predict triangle ($77.1\%$).
-   - In `square2.jpg`, outward bowed strokes smoothed the four corners into circular arcs, leading to a circle prediction ($61.6\%$).
+2. **Pointed Curvature and Tapering (`circle5.jpg`):**
+   In `circle5.jpg`, hand-drawn tapering produced a pointed egg-shaped tip on the right edge, causing the network's convolutional filters to detect an acute vertex and predict triangle ($77.1\%$).
+
+3. **Bowed Edge Softening (`square2.jpg`):**
+   In `square2.jpg`, outward bowed vertical strokes smoothed the four corners into circular arcs, leading to a circle prediction ($61.6\%$).
 
 ---
 
