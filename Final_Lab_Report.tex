@@ -165,7 +165,7 @@
 \addcontentsline{toc}{chapter}{Executive Abstract}
 Deep Convolutional Neural Networks (CNNs) have emerged as the foundational paradigm for automated visual recognition, eliminating the need for hand-crafted feature extractors through end-to-end gradient-based representation learning. This comprehensive laboratory investigation presents the end-to-end design, mathematical derivation, data engineering, empirical training dynamics, error diagnostics, and real-world domain adaptation of a Convolutional Neural Network developed with PyTorch for multi-class 2D Geometric Shape Classification (\textbf{Circles}, \textbf{Squares}, and \textbf{Triangles}).
 
-The experimental pipeline is constructed on a standardized geometric drawn-shape dataset containing $813$ curated samples structured across training ($543$ images), validation ($180$ images), and testing ($90$ images). The model features a custom two-stage convolutional hierarchy ($3 \to 32 \to 64$ channels) coupled with Rectified Linear Unit ($\text{ReLU}$) activations, Max-Pooling spatial downsampling, and a multi-layer perceptron classification head comprising $2,098,059$ learnable parameters. The model was trained using the Adam optimizer with Categorical Cross-Entropy loss over 10 epochs on CPU architecture, achieving a final training loss of $0.1236$, a validation loss of $0.1569$, and a standard test classification accuracy of \textbf{95.56\%} ($86/90$ correct predictions), with $100\%$ precision on squares and $100\%$ recall on triangles.
+The experimental pipeline is constructed on a standardized geometric drawn-shape dataset containing $813$ curated samples structured across training ($543$ images), validation ($180$ images), and testing ($90$ images). The model features a custom two-stage convolutional hierarchy ($3 \to 32 \to 64$ channels) coupled with Rectified Linear Unit ($\text{ReLU}$) activations, Max-Pooling spatial downsampling, and a multi-layer perceptron classification head comprising $2,117,059$ learnable parameters. The model was trained using the Adam optimizer with Categorical Cross-Entropy loss over 10 epochs on CPU architecture, achieving a final training loss of $0.1236$, a validation loss of $0.1569$, and a standard test classification accuracy of \textbf{95.56\%} ($86/90$ correct predictions), with $100\%$ precision on squares and $100\%$ recall on triangles.
 
 To evaluate real-world generalizability and domain transfer, $15$ custom smartphone camera photographs (5 Circles, 5 Squares, 5 Triangles) of hand-drawn geometric shapes on paper were captured, preprocessed via contour bounding box extraction into 1:1 aspect ratio square canvases with contrast enhancement and morphological line bolding. Complete metadata including exact capture timestamps, dates, and camera device models (\textbf{Vivo Y11}) were cataloged. When evaluated on the real-world dataset, the trained CNN achieved an empirical accuracy of \textbf{80.0\%} ($12/15$ correct classifications), predicting the newly captured squircle circle (\texttt{circle4.jpg}) as a circle with \textbf{98.9\%} confidence, and maintaining $\ge 86.3\%$ confidence across all triangles. Detailed mathematical derivations of 2D convolutions, receptive fields, Softmax Cross-Entropy backpropagation gradients, parameter complexity, and granular failure mode analyses are rigorously presented alongside complete experimental figures and annotated source code listings.
 
@@ -703,7 +703,7 @@ For a 2D convolutional layer with $C_{in}$ input channels, $C_{out}$ output chan
 \texttt{ReLU3} & $(128)$ & $(128)$ & --- & --- & $0$ \\
 \texttt{FC2 (Logits)} & $(128)$ & $(3)$ & $(3, 128)$ & $3$ & $3 \times 128 + 3 = \mathbf{387}$ \\
 \midrule
-\textbf{Total} & --- & --- & --- & --- & $\mathbf{2,098,059}$ \\
+\textbf{Total} & --- & --- & --- & --- & $\mathbf{2,117,059}$ \\
 \bottomrule
 \end{tabular}
 }
@@ -1040,7 +1040,7 @@ To quantify the advantages of convolutional architectures over traditional fully
 \textbf{Architecture} & \textbf{Parameters} & \textbf{Standard Test Acc} & \textbf{Phone Photo Acc} & \textbf{Translation Invariant?} \\
 \midrule
 Dense MLP ($12288 \to 256 \to 64 \to 3$) & $3,162,435$ & $71.11\%$ & $40.0\%$ & No \\
-\textbf{Our CNN ($32 \to 64 \to 128 \to 3$)} & $\mathbf{2,098,059}$ & $\mathbf{95.56\%}$ & $\mathbf{80.0\%}$ & \textbf{Yes} \\
+\textbf{Our CNN ($32 \to 64 \to 128 \to 3$)} & $\mathbf{2,117,059}$ & $\mathbf{95.56\%}$ & $\mathbf{80.0\%}$ & \textbf{Yes} \\
 \bottomrule
 \end{tabular}
 }
@@ -1113,7 +1113,7 @@ $128$ & $5$ & $0.81\text{ s}$ & $91.11\%$ & Degraded generalization \\
 \textbf{Filter Configuration} & \textbf{Total Parameters} & \textbf{Test Accuracy (\%)} & \textbf{Phone Accuracy (\%)} & \textbf{Training FLOPs} \\
 \midrule
 Narrow ($16 \to 32$) & $526,467$ & $91.11\%$ & $60.0\%$ & $12.4\text{ MFLOPs}$ \\
-\textbf{Proposed ($32 \to 64$)} & $\mathbf{2,098,059}$ & $\mathbf{95.56\%}$ & $\mathbf{80.0\%}$ & $\mathbf{49.0\text{ MFLOPs}}$ \\
+\textbf{Proposed ($32 \to 64$)} & $\mathbf{2,117,059}$ & $\mathbf{95.56\%}$ & $\mathbf{80.0\%}$ & $\mathbf{49.0\text{ MFLOPs}}$ \\
 Wide ($64 \to 128$) & $8,375,555$ & $94.44\%$ & $80.0\%$ & $194.2\text{ MFLOPs}$ \\
 \bottomrule
 \end{tabular}
