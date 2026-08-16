@@ -2,10 +2,8 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{mathpazo}
-\usepackage[scaled=0.92]{helvet}
 \usepackage{courier}
-\usepackage[none]{hyphenat}
+\renewcommand{\familydefault}{\ttdefault}
 \usepackage[a4paper,margin=1in,headheight=15pt]{geometry}
 \usepackage{graphicx}
 \usepackage{booktabs}
@@ -22,12 +20,17 @@
 \usepackage{tcolorbox}
 \usepackage[hidelinks]{hyperref}
 
-\tolerance=3000
+\tolerance=9999
 \hbadness=10000
-\emergencystretch=3.2em
+\emergencystretch=5em
 \setlength{\parskip}{0.5em}
 \setlength{\parindent}{0pt}
 \renewcommand{\baselinestretch}{1.10}
+
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{2.8em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{4.0em}{3.5em}}
+\makeatother
 
 % Define custom color palette
 \definecolor{primary}{RGB}{18, 52, 86}
@@ -69,11 +72,11 @@
 \lstset{style=py}
 
 \titleformat{\chapter}[display]
-  {\normalfont\huge\bfseries\color{primary}}
-  {\chaptertitlename\ \thechapter}{10pt}{\Huge}
+  {\normalfont\LARGE\bfseries\color{primary}}
+  {\chaptertitlename\ \thechapter}{8pt}{\LARGE}
 \titlespacing*{\chapter}{0pt}{0pt}{18pt}
-\titleformat{\section}{\normalfont\Large\bfseries\color{primary}}{\thesection}{1em}{}
-\titleformat{\subsection}{\normalfont\large\bfseries\color{secondary}}{\thesubsection}{1em}{}
+\titleformat{\section}{\normalfont\large\bfseries\color{primary}}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries\color{secondary}}{\thesubsection}{1em}{}
 
 % Header and Footer
 \pagestyle{fancy}
