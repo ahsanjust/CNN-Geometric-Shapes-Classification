@@ -1,0 +1,78 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    pdftitle={220119 - Final Lab Assignment Links},
+    pdfauthor={Ahsanul Haque (220119)}
+}
+
+\begin{document}
+
+\begin{center}
+    {\huge \textbf{AI \& ML Lab -- Final Lab Assignment Links}} \\[0.3cm]
+    {\Large \textbf{Name: Ahsanul Haque}} \\[0.1cm]
+    {\Large \textbf{ID: 220119}} \\[0.4cm]
+    {\large \textbf{CNN Image Classification -- Geometric Shapes}} \\[0.5cm]
+\end{center}
+
+\section*{Repository and Notebooks}
+
+\begin{enumerate}[leftmargin=*, itemsep=0.3cm]
+
+    \item \textbf{GitHub Profile:} \\
+    \url{https://github.com/ahsanjust/}
+
+    \item \textbf{Final Lab Standalone Assignment Repository:} \\
+    \url{https://github.com/ahsanjust/CNN-Geometric-Shapes-Classification}
+
+    \item \textbf{CNN -- GitHub Notebook:} \\
+    \url{https://github.com/ahsanjust/CNN-Geometric-Shapes-Classification/blob/master/220119_CNN.ipynb}
+
+    \item \textbf{Google Colab Notebook (GitHub-Native, Direct Link):} \\
+    \url{https://colab.research.google.com/github/ahsanjust/CNN-Geometric-Shapes-Classification/blob/master/220119_CNN.ipynb}
+
+    \item \textbf{Repository README:} \\
+    \url{https://github.com/ahsanjust/CNN-Geometric-Shapes-Classification/blob/master/readme.md}
+
+\end{enumerate}
+
+\section*{Performance Summary -- CNN (Standard Test Set)}
+
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Support} \\
+\midrule
+Circles    & 0.9643 & 0.9000 & 0.9310 & 30 \\
+Squares    & 1.0000 & 0.9667 & 0.9831 & 30 \\
+Triangles  & 0.9091 & 1.0000 & 0.9524 & 30 \\
+\midrule
+\textbf{Overall Accuracy} & \multicolumn{4}{c}{\textbf{0.9556 (95.56\%)}} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Architecture \& Workflow Summary}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Model:} 2-Layer CNN (PyTorch) -- Conv2d(3$\rightarrow$32) $\rightarrow$ ReLU $\rightarrow$ MaxPool2d(2) $\rightarrow$
+        Conv2d(32$\rightarrow$64) $\rightarrow$ ReLU $\rightarrow$ MaxPool2d(2) $\rightarrow$ Flatten $\rightarrow$
+        Linear(16384$\rightarrow$128) $\rightarrow$ ReLU $\rightarrow$ Linear(128$\rightarrow$3)
+    \item \textbf{Input Preprocessing:} $64\times 64$ RGB images with single shared transform: $\text{Resize} \rightarrow \text{ToTensor} \rightarrow \text{Normalize}(\mu=0.5, \sigma=0.5)$
+    \item \textbf{Training Setup:} CrossEntropyLoss, Adam optimizer ($\text{lr}=0.001$), batch size 64, 10 epochs
+    \item \textbf{Dataset:} Geometric Shapes (Option 5) -- train 543, validation 180, test 90, plus 10 custom smartphone photos
+    \item \textbf{Real-World Accuracy:} 9 / 10 (90.0\%) on custom smartphone photos (Circles: 4/4, Squares: 2/3, Triangles: 3/3)
+    \item \textbf{Zero-Manual-Upload Automation:} Clones repo automatically in Google Colab, loads weights from \texttt{model/220119.pth}, evaluates test set, and predicts on custom photos automatically upon clicking ``Run All''.
+\end{itemize}
+
+\end{document}
