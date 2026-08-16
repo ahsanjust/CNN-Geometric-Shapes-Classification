@@ -61,7 +61,7 @@ $$\text{Resize}((64, 64)) \to \text{ToTensor}() \to \text{Normalize}(\mu=[0.5, 0
 - **Flatten Layer:** Reshape $(64 \times 16 \times 16) = 16,384$ features.
 - **Dense Layer 1:** `nn.Linear(16384, 128)` $\to$ `nn.ReLU()`
 - **Output Layer:** `nn.Linear(128, 3)` (logits for 3 classes)
-- **Total Learnable Parameters:** $2,098,059$
+- **Total Learnable Parameters:** $2,117,059$
 
 ---
 
