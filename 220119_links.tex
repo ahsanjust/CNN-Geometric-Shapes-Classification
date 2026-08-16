@@ -70,8 +70,8 @@ Triangles  & 0.9091 & 1.0000 & 0.9524 & 30 \\
         Linear(16384$\rightarrow$128) $\rightarrow$ ReLU $\rightarrow$ Linear(128$\rightarrow$3)
     \item \textbf{Input Preprocessing:} $64\times 64$ RGB images with single shared transform: $\text{Resize} \rightarrow \text{ToTensor} \rightarrow \text{Normalize}(\mu=0.5, \sigma=0.5)$
     \item \textbf{Training Setup:} CrossEntropyLoss, Adam optimizer ($\text{lr}=0.001$), batch size 64, 10 epochs
-    \item \textbf{Dataset:} Geometric Shapes (Option 5) -- train 543, validation 180, test 90, plus 10 custom smartphone photos
-    \item \textbf{Real-World Accuracy:} 9 / 10 (90.0\%) on custom smartphone photos (Circles: 4/4, Squares: 2/3, Triangles: 3/3)
+    \item \textbf{Dataset:} Geometric Shapes (Option 5) -- train 543, validation 180, test 90, plus 15 custom smartphone photos
+    \item \textbf{Real-World Accuracy:} 12 / 15 (80.0\%) on custom smartphone photos (Circles: 4/5, Squares: 3/5, Triangles: 5/5)
     \item \textbf{Zero-Manual-Upload Automation:} Clones repo automatically in Google Colab, loads weights from \texttt{model/220119.pth}, evaluates test set, and predicts on custom photos automatically upon clicking ``Run All''.
 \end{itemize}
 
