@@ -101,7 +101,7 @@ The trained CNN model was evaluated on all 15 custom smartphone photographs ($3 
 | `circle1.jpg` | **Circle** | **circles** | 97.4% | $[97.4\%, 0.9\%, 1.6\%]$ | ✅ Correct |
 | `circle2.jpg` | **Circle** | **circles** | 97.1% | $[97.1\%, 1.4\%, 1.5\%]$ | ✅ Correct |
 | `circle3.jpg` | **Circle** | **circles** | 94.4% | $[94.4\%, 4.1\%, 1.5\%]$ | ✅ Correct |
-| `circle4.jpg` | **Circle** | **circles** | 88.7% | $[88.7\%, 10.7\%, 0.6\%]$ | ✅ Correct |
+| `circle4.jpg` | **Circle** | **circles** | 98.9% | $[98.9\%, 0.9\%, 0.2\%]$ | ✅ Correct |
 | `circle5.jpg` | **Circle** | **triangles** | 77.1% | $[14.3\%, 8.6\%, 77.1\%]$ | ❌ Pointed Egg-Apex $\to$ Triangle |
 | `square1.jpg` | **Square** | **squares** | 65.2% | $[3.0\%, 65.2\%, 31.8\%]$ | ✅ Correct |
 | `square2.jpg` | **Square** | **circles** | 61.6% | $[61.6\%, 31.1\%, 7.3\%]$ | ❌ Bowed Curvature $\to$ Circle |
@@ -118,6 +118,22 @@ The trained CNN model was evaluated on all 15 custom smartphone photographs ($3 
 - **Circles:** 4 / 5 Correct (80.0%)
 - **Squares:** 3 / 5 Correct (60.0%)
 - **Triangles:** 5 / 5 Correct (100.0%)
+
+---
+
+### 4) Comprehensive Diagnostics & Feature Activations
+
+| Dataset Breakdown & Class Balance | End-to-End Preprocessing Pipeline |
+| :---: | :---: |
+| ![Dataset Breakdown](results/dataset_distribution.png) | ![Preprocessing Pipeline](results/preprocessing_pipeline.png) |
+
+| Multi-Class ROC & PR Curves | Detailed Classification Metrics |
+| :---: | :---: |
+| ![ROC and PR](results/roc_pr_curves.png) | ![Metrics Comparison](results/metrics_comparison.png) |
+
+| Convolutional Feature Activations (Conv1 & Conv2) | Prediction Confidence & Shannon Entropy |
+| :---: | :---: |
+| ![Feature Maps](results/feature_maps.png) | ![Confidence and Entropy](results/confidence_entropy.png) |
 
 ---
 
