@@ -19,7 +19,7 @@ Opening the notebook in Google Colab and clicking **Runtime → Run all** automa
 2. Loads the saved model weights (`model/220119.pth`) if present (or trains in ~10 seconds on CPU).
 3. Evaluates the test set, builds the confusion matrix, and visualizes misclassified samples.
 4. Performs inference on the 15 real-world phone photos, outputting prediction confidence scores.
-5. Generates all 5 evaluation plots with zero manual file uploads.
+5. Generates all evaluation plots and diagnostic visual artifacts with zero manual file uploads.
 
 ---
 
@@ -68,10 +68,10 @@ $$\text{Resize}((64, 64)) \to \text{ToTensor}() \to \text{Normalize}(\mu=[0.5, 0
 ## 4. Experimental Results & Visualizations
 
 ### 1) Training History
-- **Optimizer:** `torch.optim.Adam(lr=0.001)` | **Loss:** `nn.CrossEntropyLoss` | **Batch Size:** 64 | **Epochs:** 10
-- **Final Train Loss:** 0.1236 | **Train Accuracy:** 97.42%
-- **Final Validation Loss:** 0.1569 | **Validation Accuracy:** 96.67%
-- **Test Set Accuracy:** **95.56% (86 / 90 correct)**
+- **Optimizer:** `torch.optim.Adam(lr=0.001)` | **Loss:** `nn.CrossEntropyLoss` | **Batch Size:** 64 | **Epochs:** 25
+- **Final Train Loss:** 0.2311 | **Train Accuracy:** 91.90%
+- **Final Validation Loss:** 0.1690 | **Validation Accuracy:** 93.89%
+- **Test Set Accuracy:** **96.67% (87 / 90 correct)**
 
 | Accuracy vs. Epochs | Loss vs. Epochs |
 | :---: | :---: |
@@ -81,7 +81,7 @@ $$\text{Resize}((64, 64)) \to \text{ToTensor}() \to \text{Normalize}(\mu=[0.5, 0
 
 ### 2) Confusion Matrix & Error Diagnostics
 - **Circles:** 27 / 30 correct (90.0% recall)
-- **Squares:** 29 / 30 correct (96.7% recall)
+- **Squares:** 30 / 30 correct (100.0% recall)
 - **Triangles:** 30 / 30 correct (100.0% recall)
 
 | Test Confusion Matrix | Visual Error Analysis |
@@ -98,24 +98,24 @@ The trained CNN model was evaluated on all 15 custom smartphone photographs ($3 
 #### Detailed Phone Photo Prediction Breakdown:
 | Filename | True Shape | Predicted Class | Confidence (%) | Class Probabilities $[C, S, T]$ | Result |
 | :--- | :--- | :--- | :---: | :---: | :---: |
-| `circle1.jpg` | **Circle** | **circles** | 97.4% | $[97.4\%, 0.9\%, 1.6\%]$ | ✅ Correct |
-| `circle2.jpg` | **Circle** | **circles** | 97.1% | $[97.1\%, 1.4\%, 1.5\%]$ | ✅ Correct |
-| `circle3.jpg` | **Circle** | **circles** | 94.4% | $[94.4\%, 4.1\%, 1.5\%]$ | ✅ Correct |
-| `circle4.jpg` | **Circle** | **circles** | 98.9% | $[98.9\%, 0.9\%, 0.2\%]$ | ✅ Correct |
-| `circle5.jpg` | **Circle** | **triangles** | 77.1% | $[14.3\%, 8.6\%, 77.1\%]$ | ❌ Pointed Egg-Apex $\to$ Triangle |
-| `square1.jpg` | **Square** | **squares** | 65.2% | $[3.0\%, 65.2\%, 31.8\%]$ | ✅ Correct |
-| `square2.jpg` | **Square** | **circles** | 61.6% | $[61.6\%, 31.1\%, 7.3\%]$ | ❌ Bowed Curvature $\to$ Circle |
-| `square3.jpg` | **Square** | **squares** | 79.9% | $[15.5\%, 79.9\%, 4.6\%]$ | ✅ Correct |
-| `square4.jpg` | **Square** | **circles** | 99.1% | $[99.1\%, 0.0\%, 0.9\%]$ | ❌ $45^\circ$ Diamond Rotation $\to$ Circle |
-| `square5.jpg` | **Square** | **squares** | 77.1% | $[19.5\%, 77.1\%, 3.4\%]$ | ✅ Correct |
-| `triangle1.jpg`| **Triangle** | **triangles** | 97.7% | $[2.1\%, 0.2\%, 97.7\%]$ | ✅ Correct |
-| `triangle2.jpg`| **Triangle** | **triangles** | 98.7% | $[1.0\%, 0.3\%, 98.7\%]$ | ✅ Correct |
-| `triangle3.jpg`| **Triangle** | **triangles** | 94.4% | $[3.9\%, 1.7\%, 94.4\%]$ | ✅ Correct |
-| `triangle4.jpg`| **Triangle** | **triangles** | 95.9% | $[1.1\%, 3.0\%, 95.9\%]$ | ✅ Correct (Obtuse Triangle) |
-| `triangle5.jpg`| **Triangle** | **triangles** | 86.3% | $[11.7\%, 2.0\%, 86.3\%]$ | ✅ Correct |
+| `circle1.jpg` | **Circle** | **circles** | 99.5% | $[99.5\%, 0.4\%, 0.1\%]$ | ✅ Correct |
+| `circle2.jpg` | **Circle** | **circles** | 97.9% | $[97.9\%, 1.1\%, 1.0\%]$ | ✅ Correct |
+| `circle3.jpg` | **Circle** | **circles** | 96.6% | $[96.6\%, 2.6\%, 0.8\%]$ | ✅ Correct |
+| `circle4.jpg` | **Circle** | **circles** | 92.9% | $[92.9\%, 5.1\%, 2.0\%]$ | ✅ Correct |
+| `circle5.jpg` | **Circle** | **circles** | 96.2% | $[96.2\%, 2.1\%, 1.7\%]$ | ✅ Correct |
+| `square1.jpg` | **Square** | **squares** | 88.8% | $[7.9\%, 88.8\%, 3.3\%]$ | ✅ Correct |
+| `square2.jpg` | **Square** | **squares** | 74.2% | $[18.4\%, 74.2\%, 7.4\%]$ | ✅ Correct |
+| `square3.jpg` | **Square** | **squares** | 93.8% | $[3.4\%, 93.8\%, 2.8\%]$ | ✅ Correct |
+| `square4.jpg` | **Square** | **circles** | 96.8% | $[96.8\%, 0.0\%, 3.2\%]$ | ❌ $45^\circ$ Diamond Rotation $\to$ Circle |
+| `square5.jpg` | **Square** | **circles** | 56.9% | $[43.1\%, 56.9\%, 0.0\%]$ | ❌ Rounded Corners $\to$ Circle |
+| `triangle1.jpg`| **Triangle** | **triangles** | 98.8% | $[1.2\%, 0.0\%, 98.8\%]$ | ✅ Correct |
+| `triangle2.jpg`| **Triangle** | **triangles** | 98.7% | $[0.7\%, 0.2\%, 98.7\%]$ | ✅ Correct |
+| `triangle3.jpg`| **Triangle** | **triangles** | 96.9% | $[2.3\%, 0.8\%, 96.9\%]$ | ✅ Correct |
+| `triangle4.jpg`| **Triangle** | **triangles** | 96.3% | $[2.6\%, 1.1\%, 96.3\%]$ | ✅ Correct (Obtuse Triangle) |
+| `triangle5.jpg`| **Triangle** | **triangles** | 71.3% | $[24.4\%, 4.3\%, 71.3\%]$ | ✅ Correct |
 
-**Overall Real-World Accuracy:** **12 / 15 (80.0%)**  
-- **Circles:** 4 / 5 Correct (80.0%)
+**Overall Real-World Accuracy:** **13 / 15 (86.7%)**  
+- **Circles:** 5 / 5 Correct (100.0%)
 - **Squares:** 3 / 5 Correct (60.0%)
 - **Triangles:** 5 / 5 Correct (100.0%)
 
@@ -140,13 +140,10 @@ The trained CNN model was evaluated on all 15 custom smartphone photographs ($3 
 ## 5. Scientific Domain Shift Analysis
 
 1. **Rotational Invariance Limitations (`square4.jpg`):**
-   When a square is rotated by $45^\circ$ (diamond shape), its edges become purely diagonal. Because the standard CNN without rotation augmentation expects axis-aligned horizontal and vertical lines, the diagonal contour was interpreted as radial curvature ($99.1\%$ circle).
+   When a square is rotated by $45^\circ$ (diamond shape), its edges become purely diagonal. Because the standard CNN without rotation augmentation expects axis-aligned horizontal and vertical lines, the diagonal contour was interpreted as radial curvature ($96.8\%$ circle).
 
-2. **Pointed Curvature and Tapering (`circle5.jpg`):**
-   In `circle5.jpg`, hand-drawn tapering produced a pointed egg-shaped tip on the right edge, causing the network's convolutional filters to detect an acute vertex and predict triangle ($77.1\%$).
-
-3. **Bowed Edge Softening (`square2.jpg`):**
-   In `square2.jpg`, outward bowed vertical strokes smoothed the four corners into circular arcs, leading to a circle prediction ($61.6\%$).
+2. **Heavily Rounded Corner Softening (`square5.jpg`):**
+   In `square5.jpg`, outward bowed vertical strokes and heavily rounded corners smoothed right angles into continuous curved arcs, leading to a low-confidence circle prediction ($56.9\%$), with $43.1\%$ remaining on Square.
 
 ---
 

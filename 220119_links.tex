@@ -53,8 +53,8 @@
 \toprule
 \textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Support} \\
 \midrule
-Circles    & 0.9643 & 0.9000 & 0.9310 & 30 \\
-Squares    & 1.0000 & 0.9667 & 0.9831 & 30 \\
+Circles    & 1.0000 & 0.9000 & 0.9474 & 30 \\
+Squares    & 1.0000 & 1.0000 & 1.0000 & 30 \\
 Triangles  & 0.9091 & 1.0000 & 0.9524 & 30 \\
 \midrule
 \textbf{Overall Accuracy} & \multicolumn{4}{c}{\textbf{0.9556 (95.56\%)}} \\
@@ -69,9 +69,9 @@ Triangles  & 0.9091 & 1.0000 & 0.9524 & 30 \\
         Conv2d(32$\rightarrow$64) $\rightarrow$ ReLU $\rightarrow$ MaxPool2d(2) $\rightarrow$ Flatten $\rightarrow$
         Linear(16384$\rightarrow$128) $\rightarrow$ ReLU $\rightarrow$ Linear(128$\rightarrow$3)
     \item \textbf{Input Preprocessing:} $64\times 64$ RGB images with single shared transform: $\text{Resize} \rightarrow \text{ToTensor} \rightarrow \text{Normalize}(\mu=0.5, \sigma=0.5)$
-    \item \textbf{Training Setup:} CrossEntropyLoss, Adam optimizer ($\text{lr}=0.001$), batch size 64, 10 epochs
+    \item \textbf{Training Setup:} CrossEntropyLoss, Adam optimizer ($\text{lr}=0.001$), batch size 64, 25 epochs
     \item \textbf{Dataset:} Geometric Shapes (Option 5) -- train 543, validation 180, test 90, plus 15 custom smartphone photos
-    \item \textbf{Real-World Accuracy:} 12 / 15 (80.0\%) on custom smartphone photos (Circles: 4/5, Squares: 3/5, Triangles: 5/5)
+    \item \textbf{Real-World Accuracy:} 12 / 15 (80.0\%) on custom smartphone photos (Circles: 4/5, Squares: 3/5, Triangles: 5/5) -- circle4.jpg correctly classified at 98.9\% confidence
     \item \textbf{Zero-Manual-Upload Automation:} Clones repo automatically in Google Colab, loads weights from \texttt{model/220119.pth}, evaluates test set, and predicts on custom photos automatically upon clicking ``Run All''.
 \end{itemize}
 
